@@ -1,0 +1,20 @@
+services:
+    postgres:
+        container_name: postgres
+        image: 'postgres:18-trixie'
+        user: 1000:1000
+        environment:
+            - POSTGRES_USER=root
+            - POSTGRES_PASSWORD=mypassword
+        volumes:
+            - ./data:/var/lib/postgresql
+    adminer:
+      image: adminer
+      container_name: adminer
+      ports:
+        - 8080:8080
+      depends_on:
+        - postgres
+      environment:
+        - ADMINER_DEFAULT_SERVER=postgres
+        - ADMINER_DEFAULT_USERNAME=root

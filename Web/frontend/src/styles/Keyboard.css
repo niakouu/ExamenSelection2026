@@ -1,0 +1,228 @@
+/* Retro 80s Keyboard Styling */
+
+.keyboard-container {
+  background: linear-gradient(180deg, #1a1a2e 0%, #0f0f1e 100%);
+  border: 4px solid #00ff00;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.3), 
+              inset 0 0 15px rgba(0, 255, 0, 0.1),
+              0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.keyboard-container h3 {
+  color: #00ff00;
+  text-shadow: 0 0 8px #00ff00, 0 0 15px #00ff00;
+  font-size: 1.3rem;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  margin: 0 0 1.5rem 0;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+}
+
+/* Keyboard keys container */
+.keys-container {
+  display: flex;
+  gap: 0.3rem;
+  padding: 1rem;
+  background: #0a0a14;
+  border-radius: 4px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.8);
+  overflow-x: auto;
+  position: relative;
+}
+
+/* Individual octave group */
+.octave-group {
+  display: flex;
+  gap: 0.2rem;
+  position: relative;
+}
+
+/* White keys */
+.key-white {
+  position: relative;
+  width: 45px;
+  height: 180px;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+  border: 2px solid #333;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 
+              inset 0 1px 0 rgba(255, 255, 255, 0.8),
+              inset 0 -1px 2px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.05s ease;
+  user-select: none;
+}
+
+.key-white:hover {
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 
+              inset 0 1px 0 rgba(255, 255, 255, 0.9),
+              inset 0 -1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.key-white.active {
+  background: linear-gradient(135deg, #ffff00 0%, #ffff00 100%);
+  box-shadow: 0 8px 20px rgba(255, 255, 0, 0.6), 
+              inset 0 1px 0 rgba(255, 255, 255, 0.8),
+              inset 0 -1px 2px rgba(0, 0, 0, 0.2),
+              0 0 15px rgba(255, 255, 0, 0.4);
+}
+
+.key-white:active {
+  transform: translateY(2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4), 
+              inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Black keys */
+.key-black {
+  position: absolute;
+  width: 30px;
+  height: 110px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
+  border: 2px solid #000;
+  border-radius: 0 0 3px 3px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.8), 
+              inset 0 1px 0 rgba(100, 100, 100, 0.3),
+              inset 0 -1px 2px rgba(0, 0, 0, 0.9);
+  cursor: pointer;
+  transition: all 0.05s ease;
+  user-select: none;
+  z-index: 10;
+  top: 0;
+}
+
+.key-black:hover {
+  background: linear-gradient(135deg, #333 0%, #1a1a1a 100%);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.9), 
+              inset 0 1px 0 rgba(100, 100, 100, 0.4),
+              inset 0 -1px 2px rgba(0, 0, 0, 0.9);
+}
+
+.key-black.active {
+  background: linear-gradient(135deg, #ff00ff 0%, #ff0080 100%);
+  box-shadow: 0 6px 15px rgba(255, 0, 255, 0.6), 
+              inset 0 1px 0 rgba(255, 255, 255, 0.2),
+              inset 0 -1px 2px rgba(0, 0, 0, 0.5),
+              0 0 20px rgba(255, 0, 255, 0.5);
+}
+
+.key-black:active {
+  transform: translateY(2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8), 
+              inset 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.key-label {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.5px;
+  user-select: none;
+  pointer-events: none;
+}
+
+.key-white .key-label {
+  color: #333;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.key-white.active .key-label {
+  color: #000;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.key-black .key-label {
+  color: #00ff00;
+  text-shadow: 0 0 5px #00ff00;
+  bottom: 6px;
+}
+
+.key-black.active .key-label {
+  color: #fff;
+  text-shadow: 0 0 8px #ff00ff;
+}
+
+.octave-indicator {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #00ff00;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-shadow: 0 0 5px #00ff00;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 1024px) {
+  .key-white {
+    width: 40px;
+    height: 150px;
+  }
+
+  .key-black {
+    width: 26px;
+    height: 95px;
+  }
+
+  .keyboard-container h3 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .key-white {
+    width: 35px;
+    height: 130px;
+  }
+
+  .key-black {
+    width: 23px;
+    height: 80px;
+  }
+
+  .key-label {
+    font-size: 0.65rem;
+    bottom: 6px;
+  }
+
+  .keyboard-container {
+    padding: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .keys-container {
+    padding: 0.75rem;
+  }
+}
+
+.keys-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.keys-container::-webkit-scrollbar-track {
+  background: #0a0a14;
+  border-radius: 4px;
+}
+
+.keys-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #ff00ff 0%, #00ff00 100%);
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.keys-container::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #ff0080 0%, #00ff00 100%);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+}

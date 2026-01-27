@@ -1,0 +1,12 @@
+[package]
+name = "HighPerformanceComputing"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+cubecl = { version = "0.9.0", features = ["cpu", "wgpu"] }
+
+[features]
+cuda = []
+wgpu = []
+default = ["wgpu"]

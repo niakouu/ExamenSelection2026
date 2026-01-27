@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "rootDir": "../",
+    "outDir": "./build",
+    "esModuleInterop": true,
+    "strict": true,
+    "resolveJsonModule": true,
+    "baseUrl": "./",
+    "paths": {
+      "@common/*": ["../common/*"]
+    }
+  },
+  "include": ["./**/*", "../common/**/*", "../frontend/src/types/Notes.ts"]
+}

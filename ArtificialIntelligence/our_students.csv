@@ -1,0 +1,11 @@
+international,hours_study,missed_classes,gpa,showers_per_week,does_smoke,does_homework,has_stress,avg_sleep,confidence,passed
+0,7.84,1,1.73,2,1,1,0,5.66,high,corrupted
+1,3.26,12,3.8,3,0,1,1,4.01,medium,corrupted
+0,3.74,11,2.4,3,1,1,1,3.2,medium,corrupted
+1,17.45,0,2.98,2,0,1,0,6.24,medium,corrupted
+0,1.62,9,3.99,3,0,1,1,5.52,medium,corrupted
+0,4.99,11,2.92,6,0,1,1,7.89,medium,corrupted
+1,5.24,11,3.17,3,0,1,0,7.95,high,corrupted
+0,11.04,12,3.03,4,0,0,0,7.49,low,corrupted
+0,16.41,4,2.82,2,1,0,0,7.2,medium,corrupted
+0,3.87,1,3.01,2,0,0,0,2.6,high,corrupted

@@ -1,0 +1,4 @@
+-- Pour chaque pays, trouve le nombre de développeurs de jeux vidéo, le nombre de jeux développés par ces développeurs, 
+-- la notes moyenne de ces jeux, le nombre de personnages créer, le nombre de console, 
+-- la première année de sortie d'un jeux ainsi que la dernière année de sortie d'un jeux.
+-- Utiliser STRING_AGG pour lister les genres de jeux développés par pays.
