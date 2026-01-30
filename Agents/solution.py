@@ -54,6 +54,7 @@ def solve(robot: Robot) -> None:
     prev_position : Position | None = None
     prev_prev_position : Position | None = None
     path = []
+    prev_lookup = {}
     
     while robot.position != exit_pos or not robot.is_carrying_person:
         fire_count = robot.sense_fires_around()
@@ -68,7 +69,9 @@ def solve(robot: Robot) -> None:
             target = person_pos
 
         if not robot.is_carrying_person and fire_count > 0:
-            fire_positions = robot.scan_fires()
+            if prev_lookup[f'{robot.position.x}{robot.position.y}'] == None:
+                prev_lookup[f'{robot.position.x}{robot.position.y}'] = robot.scan_fires(); 
+            
             possible_positions = [Position(robot.position.x+1, robot.position.y),
                                 Position(robot.position.x-1, robot.position.y),
                                 Position(robot.position.x, robot.position.y+1),
@@ -76,24 +79,26 @@ def solve(robot: Robot) -> None:
             
             best_pos : Position = None
             for position in possible_positions:
-                if position.x < 0 or position.y < 0 or position in fire_positions:
+                if position.x < 0 or position.y < 0 or position.x > (width-1) or position.y > (height-1) or position in prev_lookup[f'{robot.position.x}{robot.position.y}']:
                     possible_positions.remove(position)
-                if best_pos == None or (position.x ** 2 + position.y ** 2) > (best_pos.x ** 2 + best_pos.y ** 2):
+                if best_pos == None or distance(best_pos, target) > distance(position, target):
                     best_pos = position
                 
             if best_pos.x == robot.position.x+1:
-                robot.move(Direction.LEFT)
-            elif best_pos.x == robot.position.x-1:
                 robot.move(Direction.RIGHT)
+            elif best_pos.x == robot.position.x-1:
+                robot.move(Direction.LEFT)
             elif best_pos.y == robot.position.y+1:
-                robot.move(Direction.FORWARD)
-            elif best_pos.y == robot.position.y-1:
                 robot.move(Direction.BACKWARD)
-            # print(possible_positions)
-            # print(best_pos)
-            # print(robot.position)
-            # print(robot.is_carrying_person)
-            # print(fire_count)
+            elif best_pos.y == robot.position.y-1:
+                robot.move(Direction.FORWARD)
+            print(possible_positions)
+            print(height)
+            print(width)
+            print(best_pos)
+            print(robot.position)
+            print(robot.is_carrying_person)
+            print(fire_count)
         elif robot.is_carrying_person:
             if target.x == robot.position.x+1:
                 robot.move(Direction.RIGHT)
@@ -129,3 +134,9 @@ def solve(robot: Robot) -> None:
         prev_position = robot.position
 
     return
+
+def distance(position1, position2):
+    return (position1.x - position2.x)**2 + (position1.y - position2.y)**2
+
+def positionToString(position) :
+    return f'{position.x}{position.y}'
